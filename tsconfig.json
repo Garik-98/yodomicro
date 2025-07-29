@@ -4,12 +4,10 @@
     "module": "ESNext",
     "declaration": true,
     "outDir": "dist",
-    "moduleResolution": "Node",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "lib": ["ES2020", "DOM"]
+    "esModuleInterop": true,
+    "moduleResolution": "node"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["dist"]
 }
