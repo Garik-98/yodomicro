@@ -12,15 +12,20 @@ export async function compileDocx(options: CompileDocxOptions): Promise<Blob> {
   formData.append('template', options.file);
   formData.append('data', JSON.stringify(options.data));
   const endpoint = options.endpoint || process.env.YODOMICRO_API_ENDPOINT;
+  const apiKey = options.apiKey || process.env.YODOMICRO_API_KEY;
 
   if (!endpoint) {
     throw new Error('No endpoint defined for yodomicro request.');
   }
 
+  if (!apiKey) {
+    throw new Error('No API key provided for yodomicro request.');
+  }
+
   const response = await fetch(endpoint, {
     method: 'POST',
     headers: {
-      'x-api-key': options.apiKey || process.env.YODOMICRO_API_KEY || '',
+      'x-api-key': apiKey,
     },
     body: formData,
   });
